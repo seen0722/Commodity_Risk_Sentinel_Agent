@@ -1,0 +1,6 @@
+yfinance
+requests
+feedparser
+openai
+python-dotenv
+pyyaml

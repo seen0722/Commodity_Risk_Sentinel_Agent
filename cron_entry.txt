@@ -1,0 +1,2 @@
+# Run every hour
+0 * * * * cd /Users/chenzeming/dev/Commodity_Risk_Sentinel_Agent && /usr/bin/python3 -m sentinel.main >> /Users/chenzeming/dev/Commodity_Risk_Sentinel_Agent/sentinel.log 2>&1

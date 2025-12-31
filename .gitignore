@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+*.log
+.DS_Store
+
+# Project specific
+credentials.template
+sentinel.log

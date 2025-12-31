@@ -1,0 +1,26 @@
+# Commodity Risk Sentinel Configuration
+
+# Price Trigger Thresholds (Percentages)
+# The system monitors 1-day (1D) and 3-day (3D) price changes.
+triggers:
+  # Level 1: Minor Alert
+  level_1:
+    change_1d: -3.0
+
+  # Level 2: Major Alert (Crash)
+  # Fires if 1D drop is worse than X OR 3D drop is worse than Y
+  level_2:
+    change_1d: -5.0
+    change_3d: -8.0
+
+# Assets to Monitor
+assets:
+  IAU:
+    name: "Gold"
+    query: "gold price"
+  SLV:
+    name: "Silver"
+    query: "silver price"
+  COPX:
+    name: "Copper"
+    query: "copper demand China"
