@@ -1,0 +1,33 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            # 1. Go to project folder
+            cd /home/${{ secrets.USERNAME }}/Commodity_Risk_Sentinel_Agent
+            
+            # 2. Pull latest code
+            git pull origin main
+            
+            # 3. Update dependencies
+            venv/bin/pip install -r requirements.txt
+            
+            # 4. (Optional) Run a quick check
+            echo "Deployment successful. Code updated."
+            venv/bin/python --version
